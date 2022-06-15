@@ -1,1 +1,16 @@
+name: build-action
+on: [push]
+
+jobs:
+    build-macos:
+      runs-on: macos-latest
+      
+      
+    build-linux:
+      runs-on: linux-latest
+      
+    build-windows:
+      runs-on: windows-latest
+    
+
 
