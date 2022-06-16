@@ -4,9 +4,10 @@ on:
 
 jobs:
     build:
+    
         runs-on: macos-latest
         outputs:
-            build-output: ${{ steps.assemble.outputs.test }}
+            build-output: ${{ steps.exitCode.outputs.test }}
         steps:
         #Check current repository
         - name: Checkout
@@ -18,9 +19,12 @@ jobs:
         #Execute assemble
         - id: assemble 
         - name: Execute Gradle assemble
-          run: |
-            ./gradlew assemble 
-            echo "::set-output name=test::$?"
+          run: ./gradlew assemble 
+          
+        - id: exitCode
+        - name: Result Exit Code
+          run: echo "::set-output name=test::$?"
+            
             
         
     check:
