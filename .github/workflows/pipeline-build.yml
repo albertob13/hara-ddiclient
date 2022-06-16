@@ -8,6 +8,16 @@ jobs:
             matrix:
                 os: [macos-latest, ubuntu-latest, windows-latest]
         runs-on: ${{matrix.os}}
+        
+        steps:
+        #Initial Setup Gradle, can be used by a subseqeuent Gradle invocation benefitting of cache
+        - name: Setup Gradle
+          uses: gradle/gradle-build-action@v2
+          
+        #Execute assemble
+        - name: Execute Gradle assemble
+          run: ./gradlew assemble
+  
     
 
 
