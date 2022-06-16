@@ -4,10 +4,7 @@ on:
 
 jobs:
     build:
-        strategy:
-            matrix:
-                os: [macos-latest, ubuntu-latest, windows-latest]
-        runs-on: ${{matrix.os}}
+        runs-on: macos-12.2
         
         steps:
         #Initial Setup Gradle, can be used by a subseqeuent Gradle invocation benefitting of cache
