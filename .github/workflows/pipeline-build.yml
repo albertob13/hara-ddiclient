@@ -21,12 +21,7 @@ jobs:
           run: ./gradlew assemble; echo "::set-output name=test::$?"
           
         
-    check:
-        runs-on: macos-latest
-        needs: build
-        steps:
-        - name: check
-          run: echo Exited with ${{needs.build.outputs.build-output}}
+    
                  
         
       
