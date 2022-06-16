@@ -25,7 +25,8 @@ jobs:
         runs-on: macos-latest
         needs: build
         steps:
-            - run: echo Exited with ${{needs.build.outputs.build-output}}
+        - name: check
+          run: echo Exited with ${{needs.build.outputs.build-output}}
                  
         
       
