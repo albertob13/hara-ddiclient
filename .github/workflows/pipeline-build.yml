@@ -4,7 +4,7 @@ on:
 
 jobs:
     build:
-        runs-on: macos-12.2
+        runs-on: latest
         
         steps:
         #Initial Setup Gradle, can be used by a subseqeuent Gradle invocation benefitting of cache
