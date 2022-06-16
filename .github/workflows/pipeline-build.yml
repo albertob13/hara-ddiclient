@@ -5,7 +5,8 @@ on:
 jobs:
     build:
         runs-on: macos-latest
-        
+        outputs:
+            build-output: ${{ steps.assemble.outputs.test }}
         steps:
         #Check current repository
         - name: Checkout
@@ -15,8 +16,19 @@ jobs:
           uses: gradle/gradle-build-action@v2
           
         #Execute assemble
+        - id: assemble 
         - name: Execute Gradle assemble
-          run: ./gradlew assemble
+          run: ./gradlew assemble; echo "::set-output name=test::$?"
+          
+        
+    check:
+        runs-on: macos-latest
+        needs: build
+        steps:
+            - run: echo Exited with ${{needs.build.outputs.build-output}}
+                 
+        
+      
   
     
 
