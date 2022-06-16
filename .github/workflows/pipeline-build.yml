@@ -18,7 +18,17 @@ jobs:
         #Execute assemble
         - id: assemble 
         - name: Execute Gradle assemble
-          run: ./gradlew assemble; echo "::set-output name=test::$?"
+          run: |
+            ./gradlew assemble 
+            echo "::set-output name=test::$?"
+            
+        
+    check:
+        runs-on: macos-latest
+        needs: build
+        steps:
+          - run: echo ${{needs.build.outputs.build-output}}
+        
           
         
     
