@@ -6,8 +6,6 @@ jobs:
     build:
     
         runs-on: macos-latest
-        outputs:
-            build-output: ${{ steps.exitCode.outputs.test }}
         steps:
         #Check current repository
         - name: Checkout
@@ -21,25 +19,3 @@ jobs:
         - name: Execute Gradle assemble
           run: ./gradlew assemble 
           
-        - id: exitCode
-        - name: Result Exit Code
-          run: echo "::set-output name=test::$?"
-            
-            
-        
-    check:
-        runs-on: macos-latest
-        needs: build
-        steps:
-          - run: echo ${{needs.build.outputs.build-output}}
-        
-          
-        
-    
-                 
-        
-      
-  
-    
-
-
