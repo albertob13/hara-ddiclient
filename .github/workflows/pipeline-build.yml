@@ -15,7 +15,6 @@ jobs:
           uses: gradle/gradle-build-action@v2
           
         #Execute assemble
-        - id: assemble 
         - name: Execute Gradle assemble
           run: ./gradlew assemble 
           
