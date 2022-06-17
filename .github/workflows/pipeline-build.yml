@@ -5,7 +5,8 @@ on:
 jobs:
     build:
         runs-on: macos-latest
-        if: github.event.state == 'success'
+        if: >- 
+          github.event.state == 'success'
         steps:
         #Check current repository
         - name: Checkout
