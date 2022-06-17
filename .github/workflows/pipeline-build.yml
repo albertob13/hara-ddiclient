@@ -17,4 +17,4 @@ jobs:
         #Execute assemble
         - name: Execute Gradle assemble
           run: ./gradlew assemble 
-          
+          if: ${{ success() }}
