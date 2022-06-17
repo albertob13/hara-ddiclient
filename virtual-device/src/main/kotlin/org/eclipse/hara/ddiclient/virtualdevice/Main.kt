@@ -19,7 +19,8 @@ import kotlin.random.Random.Default.nextLong
 fun main() = runBlocking {
     Configuration.apply {
         System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, logLevel)
-
+	
+	var
         repeat(poolSize) {
             val clientData = HaraClientData(
                 tenant,
