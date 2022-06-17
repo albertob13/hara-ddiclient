@@ -18,3 +18,8 @@ jobs:
         - name: Execute Gradle assemble
           run: ./gradlew assemble 
           
+        # If none of all previous steps have failed... 
+        # then job complete successfully
+        - name: Check steps failure
+          if: ${{ success() }}
+          
