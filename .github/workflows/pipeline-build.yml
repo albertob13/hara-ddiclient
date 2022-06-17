@@ -19,5 +19,5 @@ jobs:
           run: ./gradlew assemble 
       
         - name: Check steps failure
-          if: ${{ success() }}
+          if: success()
           
