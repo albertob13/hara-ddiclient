@@ -5,17 +5,29 @@ on:
 jobs:
     build:
         runs-on: macos-latest
-        if: >- 
-          github.event.state == 'success'
         steps:
         #Check current repository
         - name: Checkout
           uses: actions/checkout@v3
+          
         #Initial Setup Gradle, can be used by a subseqeuent Gradle invocation benefitting of cache
         - name: Setup Gradle
           uses: gradle/gradle-build-action@v2
           
         #Execute assemble
         - name: Execute Gradle assemble
-          run: ./gradlew assemble 
-          if: ${{ success() }}
+          id: assemble
+          run: ./gradlew assemble
+          
+        #Runs if all previous steps are succedded
+        - if: ${{ success() }}
+          uses: Sibz/github-status-action@v1
+          with:
+            authToken: ${{secrets.GITHUB_TOKEN}}    #default token
+            context: 'Build run'
+            description: 'Build passed'
+            state: 'success'
+            sha: ${{github.event.pull_request.head.sha || github.sha}}
+ 
+          
+          
