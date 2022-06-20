@@ -20,8 +20,7 @@ jobs:
           run: ./gradlew assemble
           
         #Runs if all previous steps are succedded
-        - name: Build success status
-          if: ${{ success() }}
+        - name: Build status
           uses: Sibz/github-status-action@v1
           with:
             authToken: ${{secrets.GITHUB_TOKEN}}    #default token
@@ -29,6 +28,7 @@ jobs:
             description: 'Build passed'
             state: 'success'
             sha: ${{github.event.pull_request.head.sha || github.sha}}
+            
         #Runs if assemble step fails
         - name: Build fail status
           if: ${{failure() && steps.assemble.conclusion == 'failure'}}
