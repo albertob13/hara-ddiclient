@@ -1,6 +1,6 @@
 name: build-action
 on:
-    status
+    push
 
 jobs:
     build:
@@ -27,6 +27,15 @@ jobs:
             context: 'Build run'
             description: 'Build passed'
             state: 'success'
+            sha: ${{github.event.pull_request.head.sha || github.sha}}
+        #Runs if assemble step fails
+        - if: ${{failure() && steps.assemble.conclusion == 'failure'}}
+          uses: Sibz/github-status-action@v1
+          with:
+            authToken: ${{secrets.GITHUB_TOKEN}}
+            context: 'Build run'
+            description: 'Build failed'
+            state: 'failure'
             sha: ${{github.event.pull_request.head.sha || github.sha}}
  
           
