@@ -1,7 +1,9 @@
 name: kdoc-action
 
 on:
-  release
+  release:
+    types:
+      - created
 
 jobs:
   on-success:
