@@ -16,12 +16,13 @@ jobs:
       - name: Print environment variables
         run: echo "CI_REF_NAME=$CI_REF_NAME"
 
-      #- name: Generate Html documentation
-        #run: ./gradlew dokkaHtml
+      - name: Generate Html documentation
+        run: ./gradlew dokkaHtml
 
-      #- name: Setup branch gh-pages
-        #uses: peaceiris/actions-gh-pages@v3
-        #with:
-           # publish_dir: ./hara-ddiclient-api/build/dokka/html
-            #keep_files: true
+      - name: Setup branch gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./hara-ddiclient-api/build/dokka/html
+          keep_files: true
+          destination_dir: $CI_REF_NAME
 
