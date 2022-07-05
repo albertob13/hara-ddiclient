@@ -12,9 +12,6 @@ jobs:
       - name: Check repository
         uses: actions/checkout@v3
 
-      #Setup Environment Variables
-      #- uses: FranzDiebold/github-env-vars-action@v2
-
       - name: Generate Html documentation
         run: ./gradlew dokkaHtml
 
@@ -25,4 +22,3 @@ jobs:
           publish_dir: ./hara-ddiclient-api/build/dokka/html
           keep_files: true
           destination_dir: ${{ github.ref_name }}
-
