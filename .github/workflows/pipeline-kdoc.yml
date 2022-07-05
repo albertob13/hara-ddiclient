@@ -3,7 +3,7 @@ name: kdoc-action
 on:
   release:
     types:
-      - created
+      - published
 
 jobs:
   on-success:
