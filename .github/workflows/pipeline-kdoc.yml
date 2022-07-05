@@ -21,6 +21,7 @@ jobs:
       - name: Setup branch gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./hara-ddiclient-api/build/dokka/html
           keep_files: true
           destination_dir: $CI_REF_NAME
