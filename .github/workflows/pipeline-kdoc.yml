@@ -1,12 +1,7 @@
-# This is a basic workflow to help you get started with Actions
-
 name: kdoc-action
 
 on:
-  workflow_run:
-    workflows: [build-action]
-    types:
-      - completed
+  release
 
 jobs:
   on-success:
@@ -14,5 +9,17 @@ jobs:
     steps:
       - name: Check repository
         uses: actions/checkout@v3
-      - if: ${{ github.event.workflow_run.conclusion == 'success' }}
-        run: echo 'The triggering workflow passed'
+
+      - uses: FranzDiebold/github-env-vars-action@v2
+      - name: Print environment variables
+        run: echo "CI_REF_NAME=$CI_REF_NAME"
+
+      #- name: Generate Html documentation
+        #run: ./gradlew dokkaHtml
+
+      #- name: Setup branch gh-pages
+        #uses: peaceiris/actions-gh-pages@v3
+        #with:
+           # publish_dir: ./hara-ddiclient-api/build/dokka/html
+            #keep_files: true
+
