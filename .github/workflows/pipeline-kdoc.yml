@@ -2,10 +2,7 @@
 
 name: CI
 
-on:
-  workflow_run:
-    workflows: [build-action]
-    types: [completed]
+on: push
 
 jobs:
   on-success:
