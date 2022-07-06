@@ -17,13 +17,14 @@ jobs:
         run: ./gradlew dokkaHtml
 
       - name: Override index.html
-        run: echo '<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-  <meta http-equiv="refresh" content="0;URL='${{ github.ref_name }}'" />
-  </head>
-  <body>
-  </body>
-  </html>' > 'index.html'
+        run: |
+          echo '<html xmlns="http://www.w3.org/1999/xhtml">
+                <head>
+                <meta http-equiv="refresh" content="0;URL='${{ github.ref_name }}'" />
+                </head>
+                <body>
+                </body>
+                </html>' > 'index.html'
 
       - name: Create and setup directory new_doc
         run: |
