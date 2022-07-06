@@ -1,9 +1,10 @@
 name: kdoc-action
 
+#Triggered when a new tag is pushed
 on:
-  release:
-    types:
-      - published
+  push:
+    tags:
+      - *
 
 jobs:
   on-success:
