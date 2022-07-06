@@ -1,10 +1,13 @@
 name: build-action
 
-#Ignore tag push
 on:
     push:
+      #Ignore gh-pages when doc update are pushed
       branches-ignore:
         - 'gh-pages'
+      #Ignore tag pushing
+      tags-ignore:
+        - '*'
 
 jobs:
     build:
