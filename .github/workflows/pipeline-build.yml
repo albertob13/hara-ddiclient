@@ -1,6 +1,10 @@
 name: build-action
+
+#Ignore tag push
 on:
-    push
+    push:
+      branches-ignore:
+        - 'gh-pages'
 
 jobs:
     build:
