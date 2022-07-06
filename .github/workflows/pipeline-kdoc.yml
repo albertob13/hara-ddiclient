@@ -7,7 +7,7 @@ on:
       - '*'
 
 jobs:
-  on-success:
+  generate-doc:
     runs-on: ubuntu-latest
     steps:
       - name: Check repository
@@ -16,10 +16,25 @@ jobs:
       - name: Generate Html documentation
         run: ./gradlew dokkaHtml
 
+      - name: Override index.html
+        run: echo '<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+  <meta http-equiv="refresh" content="0;URL='${{ github.ref_name }}'" />
+  </head>
+  <body>
+  </body>
+  </html>' > 'index.html'
+
+      - name: Create and setup directory new_doc
+        run: |
+          mkdir new_doc
+          mv ./hara-ddiclient-api/build/dokka/html new_doc
+          mv index.html new_doc
+
       - name: Setup branch gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./hara-ddiclient-api/build/dokka/html
+          #publish_dir: ./hara-ddiclient-api/build/dokka/html
+          publish_dir: ./new_doc
           keep_files: true
-          destination_dir: ${{ github.ref_name }}
