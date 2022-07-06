@@ -20,7 +20,7 @@ jobs:
         run: |
           echo '<html xmlns="http://www.w3.org/1999/xhtml">
           <head>
-          <meta http-equiv="refresh" content="0;URL='${{ github.ref_name }}'" />
+              <meta http-equiv="refresh" content="0;URL='${{ github.ref_name }}'" />
           </head>
           <body>
           </body>
