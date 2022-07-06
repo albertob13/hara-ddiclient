@@ -28,8 +28,8 @@ jobs:
 
       - name: Create and setup directory new_doc
         run: |
-          mkdir new_doc
-          mv ./hara-ddiclient-api/build/dokka/html new_doc
+          mkdir -p new_doc/${{ github.ref_name }} 
+          mv ./hara-ddiclient-api/build/dokka/html/* new_doc/${{ github.ref_name }}
           mv index.html new_doc
 
       - name: Setup branch gh-pages
