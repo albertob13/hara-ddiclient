@@ -5,10 +5,16 @@ on:
   push:
     tags:
       - '*'
+  workflow_run:
+    workflows: [build-action]
+    types:
+      - completed
 
 jobs:
   generate-doc:
     runs-on: ubuntu-latest
+    #Job will only run if the "build-action" workflow succeeded
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Check repository
         uses: actions/checkout@v3
