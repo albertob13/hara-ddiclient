@@ -5,9 +5,6 @@ on:
       #Ignore gh-pages when doc update are pushed
       branches-ignore:
         - 'gh-pages'
-      #Ignore tag pushing
-      tags-ignore:
-        - '*'
 
 jobs:
     build:
